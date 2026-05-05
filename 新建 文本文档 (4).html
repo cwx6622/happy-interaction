@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开心点好嘛</title>
+    <style>
+        body {
+            background-color: #fff0f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .container {
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+        .emoji {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .btn-good {
+            background-color: #ff3b30;
+        }
+        .btn-bad {
+            background-color: #5890ff;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .tip {
+            font-size: 18px;
+            color: #ff6b6b;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">😊</div>
+        <h1>开心点好嘛</h1>
+        <div class="btn-group">
+            <button class="btn-good" id="btnGood">好</button>
+            <button class="btn-bad" id="btnBad">不好</button>
+        </div>
+        <div class="tip" id="finalTip">你愿意开心，我就超开心啦～</div>
+    </div>
+
+    <script>
+        const btnBad = document.getElementById('btnBad');
+        const finalTip = document.getElementById('finalTip');
+        let clickCount = 0;
+        const texts = ['别这样呀', '再笑笑嘛', '你笑起来超好看的'];
+
+        btnBad.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount <= texts.length) {
+                btnBad.textContent = texts[clickCount - 1];
+            }
+            if (clickCount === texts.length) {
+                setTimeout(() => {
+                    btnBad.style.display = 'none';
+                    finalTip.style.display = 'block';
+                }, 500);
+            }
+        });
+
+        document.getElementById('btnGood').addEventListener('click', () => {
+            alert('你愿意开心，我真的超开心！');
+        });
+    </script>
+</body>
+</html>
